@@ -72,7 +72,9 @@ bool CGame::Start()
 		case Estado::ESTADO_FINALIZANDO:
 			break;
 		};
+		SDL_Flip(screen);
     }
-	SDL_Flip(screen);
+	
+
 	return true;
 }
