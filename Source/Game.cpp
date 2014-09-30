@@ -9,7 +9,7 @@
 CGame::CGame(){
 	estado = ESTADO_INICIANDO;
 	atexit(SDL_Quit);
-
+	////ACT3: Mal, la inicializacion de abajo, debe estar en metodo llamado iniciando.
 	//SDL_Surface * screen;
 	if (SDL_Init(SDL_INIT_VIDEO)<0)
 	{
@@ -73,6 +73,7 @@ bool CGame::Start()
 			break;
 		};
     }
-	SDL_Flip(screen);
+	SDL_Flip(screen);
+
 	return true;
 }
