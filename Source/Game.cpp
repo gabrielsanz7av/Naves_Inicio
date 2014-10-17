@@ -9,22 +9,39 @@
 CGame::CGame(){
 	estado = ESTADO_INICIANDO;
 	atexit(SDL_Quit);
+	//ACT3: Mal, este codigo no va aqui.
 	////ACT3: Mal, la inicializacion de abajo, debe estar en metodo llamado iniciando.
 	//SDL_Surface * screen;
+	//if (SDL_Init(SDL_INIT_VIDEO)<0)
+	//{
+	//	printf("Error: %s", SDL_GetError());
+	//	exit(EXIT_FAILURE);
+	//}
+	//screen = SDL_SetVideoMode(640, 480,24, SDL_HWACCEL);
+	//if (screen == NULL)
+	//{
+	//	printf("Error: %s", SDL_GetError());
+	//	exit(EXIT_FAILURE);		
+	//}
+	//SDL_Flip(screen);
+	//SDL_WM_SetCaption("Mi Primer juego", NULL);
+}
+
+//ACT3: Mal, falto el metodo "iniciando()"
+void CGame::Iniciando(){
 	if (SDL_Init(SDL_INIT_VIDEO)<0)
 	{
 		printf("Error: %s", SDL_GetError());
 		exit(EXIT_FAILURE);
 	}
-	screen = SDL_SetVideoMode(640, 480,24, SDL_HWACCEL);
+	screen = SDL_SetVideoMode(640, 480, 24, SDL_HWACCEL);
 	if (screen == NULL)
 	{
 		printf("Error: %s", SDL_GetError());
-		exit(EXIT_FAILURE);		
+		exit(EXIT_FAILURE);
 	}
-	SDL_Flip(screen);
-	SDL_WM_SetCaption("Mi Primer juego", NULL);
 	
+	SDL_WM_SetCaption("Mi Primer juego", NULL);
 }
 
 // Con esta función eliminaremos todos los elementos en pantalla
@@ -42,6 +59,10 @@ bool CGame::Start()
 		//Maquina de estados
 		switch (estado){
 		case Estado::ESTADO_INICIANDO:
+			Iniciando();//ACT3: Falto mandar a llamar este metodo.
+			estado = ESTADO_MENU;
+			break;//ACT2: Mal, falto este break.
+		case Estado::ESTADO_MENU:
 		{
 			nave = SDL_LoadBMP("../Data/MiNave.bmp");
 
@@ -62,7 +83,6 @@ bool CGame::Start()
 
 			SDL_FreeSurface(nave);
 		}
-		case Estado::ESTADO_MENU:
 			break;
 		case Estado::ESTADO_JUGANDO:
 			break;
