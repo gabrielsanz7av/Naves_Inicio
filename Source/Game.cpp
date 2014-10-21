@@ -10,15 +10,42 @@ CGame::CGame()
 {
 	estado = Estado::ESTADO_INICIANDO;
 	atexit(SDL_Quit);
+<<<<<<< HEAD
 }
 void CGame::Iniciando(){
 
 
 	if (SDL_Init(SDL_INIT_AUDIO)){
 		printf("Error %s ", SDL_GetError());
+=======
+	//ACT3: Mal, este codigo no va aqui.
+	////ACT3: Mal, la inicializacion de abajo, debe estar en metodo llamado iniciando.
+	//SDL_Surface * screen;
+	//if (SDL_Init(SDL_INIT_VIDEO)<0)
+	//{
+	//	printf("Error: %s", SDL_GetError());
+	//	exit(EXIT_FAILURE);
+	//}
+	//screen = SDL_SetVideoMode(640, 480,24, SDL_HWACCEL);
+	//if (screen == NULL)
+	//{
+	//	printf("Error: %s", SDL_GetError());
+	//	exit(EXIT_FAILURE);		
+	//}
+	//SDL_Flip(screen);
+	//SDL_WM_SetCaption("Mi Primer juego", NULL);
+}
+
+//ACT3: Mal, falto el metodo "iniciando()"
+void CGame::Iniciando(){
+	if (SDL_Init(SDL_INIT_VIDEO)<0)
+	{
+		printf("Error: %s", SDL_GetError());
+>>>>>>> 8a03039870a065c0b2cef2974dc9d3a5a13e5543
 		exit(EXIT_FAILURE);
 
 	}
+<<<<<<< HEAD
 
 	screen = SDL_SetVideoMode(WIDTH_SCREEN, HEIGHT_SCREEN, 24, SDL_HWSURFACE);
 
@@ -30,6 +57,16 @@ void CGame::Iniciando(){
 	SDL_WM_SetCaption("Mi primer Juego", NULL);
 	nave = new Nave(screen, "../Data/minave.bmp");
 	//nave->CargarImagen("../Data/minave.bmp");
+=======
+	screen = SDL_SetVideoMode(640, 480, 24, SDL_HWACCEL);
+	if (screen == NULL)
+	{
+		printf("Error: %s", SDL_GetError());
+		exit(EXIT_FAILURE);
+	}
+	
+	SDL_WM_SetCaption("Mi Primer juego", NULL);
+>>>>>>> 8a03039870a065c0b2cef2974dc9d3a5a13e5543
 }
 void CGame::Finalize()
 {
@@ -44,7 +81,16 @@ bool CGame::Start()
 	while (salirJuego == false)
 	{
 		//Maquina de estados
+<<<<<<< HEAD
 		switch (estado)
+=======
+		switch (estado){
+		case Estado::ESTADO_INICIANDO:
+			Iniciando();//ACT3: Falto mandar a llamar este metodo.
+			estado = ESTADO_MENU;
+			break;//ACT2: Mal, falto este break.
+		case Estado::ESTADO_MENU:
+>>>>>>> 8a03039870a065c0b2cef2974dc9d3a5a13e5543
 		{
 		case Estado::ESTADO_INICIANDO:
 			printf("\nEstado Iniciado.....[1] ");
@@ -52,6 +98,7 @@ bool CGame::Start()
 			estado = ESTADO_MENU;
 			break;
 
+<<<<<<< HEAD
 		case Estado::ESTADO_MENU:
 			printf("\nEstado Menu.........[2] ");
 			
@@ -70,6 +117,10 @@ bool CGame::Start()
 				{
 					estado = ESTADO_FINALIZADO;
 				}
+=======
+			SDL_FreeSurface(nave);
+		}
+>>>>>>> 8a03039870a065c0b2cef2974dc9d3a5a13e5543
 			break;
 		case Estado::ESTADO_JUGANDO:
 			printf("\nEstado Jugando......[3] ");
