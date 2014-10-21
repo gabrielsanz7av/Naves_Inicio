@@ -1,27 +1,34 @@
-# include <SDL.h>
+#include <SDL.h>
 #include <SDL_image.h>
+#include "Nave.h"
+
 class CGame
 {
 public:
+
 	bool Start();
 	static CGame instanceGame;
 
 	CGame();
 	void Finalize();
 
-	enum Estado{
+	enum Estado
+	{
 		ESTADO_INICIANDO,
 		ESTADO_MENU,
 		ESTADO_JUGANDO,
 		ESTADO_TERMINANDO,
-		ESTADO_FINALIZANDO
+		ESTADO_FINALIZADO,
 	};
-
 
 private:
 	void Iniciando();
+	Uint8 *keys;// variable sirve para ver si determinadas teclas
+	SDL_Event event;
+
+
 	SDL_Surface *screen;
-	SDL_Surface *nave;
- Estado estado;
+	Nave * nave;
+	Estado estado;
 
 };
