@@ -64,6 +64,7 @@ bool CGame::Start()
 				if (b == 0)
 				{
 					estado = ESTADO_JUGANDO;
+					b = 1;
 				}
 				else
 				{
@@ -77,12 +78,11 @@ bool CGame::Start()
 		case Estado::ESTADO_FINALIZADO:
 			printf("\nEstado Finalizado...[4] ");
 			getchar();
+			salirJuego = true;
 			break;
 		case Estado::ESTADO_TERMINANDO:
 			printf("\nEstado Terminado....[5] ");
 			estado = ESTADO_MENU;
-			salirJuego = true;
-			
 
 			break;
 		};
